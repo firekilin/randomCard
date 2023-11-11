@@ -1,0 +1,77 @@
+
+/* 翻牌 */
+
+.turncard {
+  position: relative;
+}
+
+
+
+.turncard .turncardBack,
+.turncard .turncardBack div,
+.turncard .turncardFront {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.turncardBack,.turncardFront {
+  transition: all 0.5s;
+  transform-style: preserve-3d;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.turncardBack {
+  backface-visibility: hidden;
+}
+
+.turncardFront {
+  background-color: #fff;
+
+}
+
+
+.turncardImgbox {
+  width: 100%;
+ 
+}
+
+
+
+.turncardWrap {
+  transform: perspective(var(--e-transform-perspective,0)) rotate(var(--e-transform-rotateZ,0)) rotateX(var(--e-transform-rotateX,0))  translateY(var(--e-transform-translateY,0));
+}
+
+.turncardWrap {
+  width: 50%;
+}
+
+/* 轉 */
+.turncardWrap.roll .turncardBack{
+  transform: rotateY(180deg);
+}
+.turncardWrap .turncardFront {
+  transform: rotateY(-180deg);
+ }
+ .turncardWrap.roll .turncardFront{
+      transform: rotateY(0deg);
+  }
+
+.card1 {--e-transform-rotateZ: -10deg;
+  --e-transform-translateY: 20px;
+}
+
+.card2 {--e-transform-rotateZ: 0deg;
+  --e-transform-translateY: 0px;
+}
+
+
+.card3 {--e-transform-rotateZ: 10deg;
+  --e-transform-translateY: 20px;
+}
+
+.container {
+  padding-top: 50px;
+}
