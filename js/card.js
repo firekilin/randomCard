@@ -3,9 +3,9 @@
     
     $(".turncardWrap").removeClass("roll");
     setTimeout(()=>{ 
-        $("#card1").attr("src","assets/img/card/"+itemlist[0]);
-        $("#card2").attr("src","assets/img/card/"+itemlist[1]);
-        $("#card3").attr("src","assets/img/card/"+itemlist[2]); 
+        $("#card1").attr("src","img/card/"+itemlist[0]);
+        $("#card2").attr("src","img/card/"+itemlist[1]);
+        $("#card3").attr("src","img/card/"+itemlist[2]); 
     }, 500);
     
 }
@@ -98,7 +98,15 @@ let newre=()=>{
 }
 
 
+//初始化 載入圖片
+let init=()=>{
+    for(let i=0;i<cardName.length;i++){
+        $("body").append($(`<img src="img/card/${cardName[i]}" style="display:none;">`));
+    }
+  
+}
 
+init();//載入圖片
 
 newre();
 random();
