@@ -8,7 +8,7 @@
 }
 
 .TV {
-   position: fixed;
+   position: absolute;
    background: linear-gradient(90deg, #ffffff69 0,
                                #ffffff69 calc(2%), #000000a3 calc(2% + 1px), black calc(2% + 2px), #ffffffde calc(2% + 3px),
                                #ffffff9e calc(9%), black calc(9% + 1px), #00000024 calc(9% + 3px), #ffffff69 calc(9% + 3px),
