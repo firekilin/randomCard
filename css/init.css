@@ -1,0 +1,14 @@
+body{
+    background: white;
+}
+#header{
+    position: relative;
+    z-index: 999;
+    background-color: white !important;
+}
+
+#header > div > a {
+    padding-left: calc(50% - 100px);
+    font-family: "Segoe Script";
+}
+
