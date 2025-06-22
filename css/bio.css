@@ -1,0 +1,22 @@
+.bio-bg {
+    position: relative;
+    height: 150vh;
+    background: #b1d2cb;
+}
+.bio-bg-1 {
+    position: absolute;
+    display: block;
+    width: 100vw;
+    padding-top: 50vh;
+}
+
+.bio-bg-2 {
+    top: 100px;
+    left: 50px;
+    display: block;
+    position: absolute;
+    height: 900px;
+    z-index: 1;
+    transition: all 0.1s ease;
+    font-size: 70px;
+}
