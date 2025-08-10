@@ -9,13 +9,14 @@
 .align {
     display: block;
     position: relative;
-    width: 80vw;
+    transform: scale(0.7);
 }
 
 
 .bg {
     position: relative;
-    width: 100%;
+    width: 605px;
+    height: 800px;
     left: 0px;
     top: 0px;
     object-fit: cover;
