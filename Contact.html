@@ -1,0 +1,98 @@
+<html lang="TW">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> demo</title>
+
+  <link rel="stylesheet" href="css/font-awesome/all.min.css">
+  <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="css/init.css">
+
+  <link rel="stylesheet" href="css/contact.css">
+
+</head>
+
+<body>
+  <script src="js/jquery/jquery.min.js"></script>
+  <script src="js/init.js"></script>
+
+
+  <!--header navbar-->
+  <nav id="header" class="navbar navbar-expand-lg bg-body-tertiary bg-color"></nav>
+
+  <div class="main-h container mt-4">
+    <div class="row">
+      <!-- 左邊 video -->
+      <div class="col-md-6 mb-3 videoBox">
+        <video src="img/contact.mp4" class="contactVideo" autoplay="autoplay" loop="loop" muted="muted"></video>
+      </div>
+      <!-- 右邊 card -->
+      <div class="col-md-6 mb-3">
+        <div class="card rightcard">
+          <div class="card-body">
+            <h5 class="card-title">Contact Us</h5>
+            <p class="card-text">
+              Feel free to reach out to us at any time. We're here to help with orders, product questions, and any
+              feedback you may have.
+              <br><br>
+              Our customer service team can assist by email Monday through Friday, from 9am to 5pm PT (excluding
+              holidays). We'll aim to get back to you within 2 business days.
+              <br><br>
+              *indicates a required field
+            </p>
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" id="fullname" placeholder="name@example.com" value="">
+              <label for="fullname">First and Last Name*</label>
+              <div class="invalid-feedback">
+                Please provide your name.
+              </div>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="email" class="form-control" id="email" placeholder="name@example.com" value="">
+              <label for="email">Email*</label>
+              <div class="invalid-feedback">
+                Please provide a valid email address.
+              </div>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" id="contactReason" placeholder="name@example.com"
+                value="">
+              <label for="contactReason">Contact Reason*</label>
+              <div class="invalid-feedback">
+                Please provide a contact reason.
+              </div>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" id="topic" placeholder="name@example.com" value="">
+              <label for="topic">Topic*</label>
+              <div class="invalid-feedback">
+                Please provide a topic.
+              </div>
+            </div>
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Leave a comment here" id="details"
+                style="height: 100px"></textarea>
+              <label for="details">Tell us the Details*</label>
+              <div class="invalid-feedback">
+                Please provide the details.
+              </div>
+            </div>
+            <div class="col-12 mt-4">
+              <button class="btn btn-primary" id="submit" type="submit">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--footer navbar-->
+  <footer id="footer" class="bg-dark text-center text-white pt-4"></footer>
+  <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+
+  <script src="js/contact.js"></script>
+</body>
+
+</html>

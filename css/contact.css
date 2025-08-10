@@ -1,0 +1,25 @@
+.contactVideo {
+position: relative;
+display: block;
+  width: 100%;
+}
+
+.videoBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: color(srgb 0.9851 0.9802 0.9804);
+
+}
+
+#submit {
+    background-color: color(srgb 0.9999 0.7266 0.7318);
+    border-color: color(srgb 0.9905 0.6305 0.6546);
+
+}
+
+#submit:hover {
+    background-color: white;
+    color: color(srgb 0.9905 0.6305 0.6546);
+
+}

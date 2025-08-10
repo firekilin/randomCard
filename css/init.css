@@ -4,9 +4,7 @@
     }
 }
 
-body{
-    background: white;
-}
+
 #header{
     position: relative;
     z-index: 999;
@@ -18,19 +16,72 @@ body{
     font-family: "Segoe Script";
 }
 
-
-
 .betweenli {
     display: inline-block;
     width: 20px;
 }
 
+.main-nh{
+    min-height: calc(100vh - 200px);
+}
+
+.main-h{
+    min-height: calc(100vh - 250px);
+}
 
 #footer {
     display: block;
     position: relative;
-    bottom: 0px;
+    width: 100%;
+    background-color: color(srgb 1 0.725 0.7301) !important;
 }
-.footer-container {
+#footer .footer-container {
     overflow: hidden;
 }
+
+#footer .bg-black{
+    background-color: color(srgb 0.99 0.6286 0.6554) !important;
+
+}
+
+#footer .form-control::placeholder {
+  color: color(srgb 0.9905 0.6305 0.6546);
+  opacity: 1;
+}
+
+#footer .btn.btn-outline-secondary{
+    color: color(srgb 0.9999 1 1);
+    border-color: white; 
+}
+
+#footer .btn.btn-outline-secondary:hover{
+    background-color: color(srgb 1 0.45 0.4859);
+}
+
+#footer a.nav-link.px-3.text-light:hover{
+    background-color: color(srgb 1 0.45 0.4859);
+}
+
+#footer .btn.btn-outline-light.btn-lg.rounded-circle.mx-2:hover{
+    color: white ;
+    background-color: color(srgb 1 0.45 0.4859);
+}
+
+.nav-link.ft-Color {
+    padding-left: 20px;
+    color: color(srgb 0.99 0.6286 0.6554);
+
+}
+
+.offcanvas-header.bg-color{
+    padding-left: 20px;
+    color: color(srgb 1 0.51 0.5473);
+
+}
+
+
+.nav-link.ft-Color:hover {
+    color: white;
+    background-color: color(srgb 0.99 0.6286 0.6554) !important;
+}
+
