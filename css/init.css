@@ -3,7 +3,9 @@
             visibility: hidden !important;
     }
 }
-
+.container-fluid, .row {
+    overflow-x: hidden;
+}
 
 #header{
     position: relative;
