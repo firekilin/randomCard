@@ -11,7 +11,7 @@ class CardGame {
         return randomList.sort(() => Math.random() - 0.5);
     }
 
-    game01 = (element,cardnum) => {
+    game01 = (element, cardnum) => {
         let randomCards = this.randomSort();
         let w = element.width() - 100;
         let h = 50;
@@ -20,8 +20,10 @@ class CardGame {
         //顯示選取的卡片
         let selectShow = () => {
             for (let i = 0; i < selectItem.length; i++) {
-                selectItem[i].setStyle(`left:${w / 2 - 320 + (i * 220)}px;top:${h + 170}px;width:200px;height:300px;`);
+
+                selectItem[i].setStyle(``);
                 selectItem[i].show();
+
             }
         }
         //設定物件顯示
@@ -44,9 +46,13 @@ class CardGame {
                 cardList[i].hide();
                 cardList[i].getCardElement().off("click").on("click", () => {
                     if (selectItem.length < 3) {
+                        cardList[i].setStyle(`transition: none;position: relative;left: ${parseFloat(cardList[i].getCardElement().css("left"), 10) - (cardList[i].getCardElement().prevAll(".roll").length * 220)}px;top: ${cardList[i].getCardElement().css("top")};`);
                         selectItem.push(cardList[i]);
+                        setTimeout(() => {
+                            selectShow();
+                        }, 10);
+
                     }
-                    selectShow();
                 });
             }
             //設定重置按鈕
@@ -127,5 +133,5 @@ class CardItem {
 $(() => {
 
     let cardGame01 = new CardGame();
-    cardGame01.game01($("#cardGame01"),10);
+    cardGame01.game01($("#cardGame01"), 10);
 });
