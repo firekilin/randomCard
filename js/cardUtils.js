@@ -11,7 +11,7 @@ class CardGame {
         return randomList.sort(() => Math.random() - 0.5);
     }
 
-    game01 = (element) => {
+    game01 = (element,cardnum) => {
         let randomCards = this.randomSort();
         let w = element.width() - 100;
         if(element.width()<800){
@@ -28,7 +28,7 @@ class CardGame {
             }
         }
         //設定物件顯示
-        for (let i = 0; i < randomCards.length; i++) {
+        for (let i = 0; i < cardnum; i++) {
             let cardItem = new CardItem(randomCards[i], "", false);
             cardList.push(cardItem);
             element.append(cardItem.getCardElement());
@@ -39,8 +39,8 @@ class CardGame {
             let cx = w / 2;
             let cy = r;
             selectItem = new Array();
-            for (let i = 0; i < cardList.length; i++) {
-                let x = (i / (cardList.length - 1)) * w;
+            for (let i = 0; i < cardnum; i++) {
+                let x = (i / (cardnum - 1)) * w;
                 let dx = x - cx;
                 let y = cy - Math.sqrt(r * r - dx * dx);
                 cardList[i].setStyle(`left: ${x}px;top: ${h - y}px`);
@@ -64,7 +64,7 @@ class CardGame {
                 element.empty();
                 cardList = new Array();
                 let randomCards = this.randomSort();
-                for (let i = 0; i < randomCards.length; i++) {
+                for (let i = 0; i < cardnum; i++) {
                     let cardItem = new CardItem(randomCards[i], `left:${0}px;top:${0}px`, false);
                     cardList.push(cardItem);
                     element.append(cardItem.getCardElement());
@@ -130,5 +130,5 @@ class CardItem {
 $(() => {
 
     let cardGame01 = new CardGame();
-    cardGame01.game01($("#cardGame01"));
+    cardGame01.game01($("#cardGame01"),10);
 });
