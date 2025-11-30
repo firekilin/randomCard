@@ -14,9 +14,6 @@ class CardGame {
     game01 = (element,cardnum) => {
         let randomCards = this.randomSort();
         let w = element.width() - 100;
-        if(element.width()<800){
-            w = 700;
-        }
         let h = 50;
         let cardList = new Array();
         let selectItem = new Array();
