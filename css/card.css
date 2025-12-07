@@ -53,11 +53,22 @@
   padding-top: 50px;
 }
 
+.cardItem.roll {
+  position: relative;
+  left: 0px;
+  top: 230px;
+  width: 200px;
+  height: 300px;
+  margin-left: 20px;
+  margin-top: 20px;
+  }
+
+
 .cardGame01 {
   display: flex;
-  overflow-x: scroll;
+  overflow-y: scroll;
   width: 100%;
-  height: 540px;
+  height: 600px;
   position: relative;
   border: 1px dashed #aaa;
   flex-wrap: wrap;
@@ -74,12 +85,25 @@
   cursor: pointer;
 }
 
-.cardItem.roll {
+
+
+.cardGame02 {
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+  height: 600px;
   position: relative;
-  left: 0px;
-  top: 230px;
-  width: 200px;
-  height: 300px;
-  margin-left: 20px;
-  margin-top: 20px;
-  }
+  border: 1px dashed #aaa;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.cardGame02 .resetButton {
+  position: absolute;
+  top: 200px;
+  left: 10px;
+  z-index: 1000;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
