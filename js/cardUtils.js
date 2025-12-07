@@ -168,6 +168,25 @@ class CardGame {
                 setinit();
             });
             element.append(resetButton);
+             //洗牌
+            let shuffleButton = $(`<button class="resetButton btn btn-light" style="left:80px;">洗牌</button>`);
+            shuffleButton.on("click", () => {
+                element.empty();
+                cardList = new Array();
+                let randomCards = this.randomSort();
+                for (let i = 0; i < randomCards.length; i++) {
+                    let cardItem = new CardItem(randomCards[i], `left: ${0}px;top: ${0}px`, false);
+                    cardList.push(cardItem);
+                    element.append(cardItem.getCardElement());
+                }
+                element.append(resetButton);
+                element.append(shuffleButton);
+
+                setTimeout(() => {
+                    setinit();
+                }, 100);
+            });
+            element.append(shuffleButton);
         }
         setinit();
     }
