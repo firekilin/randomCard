@@ -1,3 +1,32 @@
+function flipMove($el, changeDomFn, duration = 450) {
+    const el = $el.getCardElement()[0];
+
+    // First
+    const first = el.getBoundingClientRect();
+
+    // DOM 變更
+    changeDomFn();
+
+    // Last
+    const last = el.getBoundingClientRect();
+
+    const dx = first.left - last.left;
+    const dy = first.top - last.top;
+
+    // Invert
+    el.style.transform = `translate(${dx}px, ${dy}px)`;
+    el.style.transition = "none";
+
+    // 強制 reflow
+    el.offsetHeight;
+
+    // Play
+    el.style.transform = "";
+    el.style.transition = `transform ${duration}ms ease`;
+    $el.show();
+}
+
+
 
 class CardItem {
     cardDiv = null;
@@ -38,6 +67,10 @@ class CardItem {
         this.cardDiv.attr("style", this.style);
     }
 
+    getLocation() {
+        return this.cardDiv[0].getBoundingClientRect();
+    }
+
 }
 
 
@@ -57,140 +90,127 @@ class CardGame {
     }
 
     game01 = (element, cardnum = this.cardList.length) => {
+         let cardListElement = $("<div class='cardList'>");
+        let cardSelectElement = $("<div class='cardSelect'>");
         let randomCards = this.randomSort();
         let w = element.width() - 120;
         let h = 50;
-        let cardList = new Array();
-        let selectItem = new Array();
-        //顯示選取的卡片
-        let selectShow = () => {
-            for (let i = 0; i < selectItem.length; i++) {
-
-                selectItem[i].setStyle(``);
-                selectItem[i].show();
-
-            }
-        }
-        //設定物件顯示
-        for (let i = 0; i < cardnum; i++) {
-            let cardItem = new CardItem(randomCards[i], "", false);
-            cardList.push(cardItem);
-            element.append(cardItem.getCardElement());
-        }
-        // 計算弧度設定初始位置
+       
         let setinit = () => {
+            element.empty();
+            cardListElement.empty();
+            cardSelectElement.empty();
             let r = (w * w) / (8 * h) + (h / 2);
             let cx = w / 2;
             let cy = r;
-            selectItem = new Array();
+            
+            //設定物件顯示
             for (let i = 0; i < cardnum; i++) {
-                let x = (i / (cardnum - 1)) * w;
-                let dx = x - cx;
-                let y = cy - Math.sqrt(r * r - dx * dx);
-                cardList[i].setStyle(`left: ${x}px;top: ${h - y}px`);
-                cardList[i].hide();
-                cardList[i].getCardElement().off("click").on("click", () => {
-                    if (selectItem.length < 3) {
-                        cardList[i].setStyle(`transition: none;position: relative;left: ${parseFloat(cardList[i].getCardElement().css("left"), 10) - (cardList[i].getCardElement().prevAll(".roll").length * 220)}px;top: ${cardList[i].getCardElement().css("top")};`);
-                        selectItem.push(cardList[i]);
-                        setTimeout(() => {
-                            selectShow();
-                        }, 10);
+                let cardItem = new CardItem(randomCards[i], "", false);
+                cardItem.setStyle(`left: 0px;top: 0px`);
+
+                cardItem.hide();
+                cardItem.getCardElement().off("click").on("click", () => {
+                    if (cardSelectElement.children().length < 3) {
+                        flipMove(cardItem, () => {
+                            cardItem.setStyle(``);
+                            cardSelectElement.append(cardItem.getCardElement());
+                        });
 
                     }
                 });
+                cardListElement.append(cardItem.getCardElement());
+                setTimeout(() => {
+                     let x = (i / (cardnum - 1)) * w;
+                    let dx = x - cx;
+                    let y = cy - Math.sqrt(r * r - dx * dx);
+                    cardItem.setStyle(`left: ${x}px;top: ${h - y}px`);
+
+                }, 100);
             }
+
+
             //設定重置按鈕
             let resetButton = $(`<button class="resetButton btn btn-light">重置</button>`);
             resetButton.on("click", () => {
                 setinit();
             });
-            element.append(resetButton);
+
+
             //洗牌
             let shuffleButton = $(`<button class="resetButton btn btn-light" style="left:80px;">洗牌</button>`);
             shuffleButton.on("click", () => {
-                element.empty();
-                cardList = new Array();
-                let randomCards = this.randomSort();
-                for (let i = 0; i < cardnum; i++) {
-                    let cardItem = new CardItem(randomCards[i], `left:${0}px;top:${0}px`, false);
-                    cardList.push(cardItem);
-                    element.append(cardItem.getCardElement());
-                }
-                element.append(resetButton);
-                element.append(shuffleButton);
 
-                setTimeout(() => {
-                    setinit();
-                }, 100);
+                randomCards = this.randomSort();
+                setinit();
+
             });
+            element.append(cardListElement);
+            element.append(resetButton);
             element.append(shuffleButton);
+            element.append(cardSelectElement);
+
         }
         setinit();
-
     }
 
     game02 = (element) => {
+        let cardListElement = $("<div class='cardList'>");
+        let cardSelectElement = $("<div class='cardSelect'>");
         let randomCards = this.randomSort();
-        let cardList = new Array();
-        let selectItem = new Array();
-        //顯示選取的卡片
-        let selectShow = () => {
-            for (let i = 0; i < selectItem.length; i++) {
 
-                selectItem[i].setStyle(``);
-                selectItem[i].show();
-
-            }
-        }
-        //設定物件顯示
-        for (let i = 0; i < randomCards.length; i++) {
-            let cardItem = new CardItem(randomCards[i], "", false);
-            cardList.push(cardItem);
-            element.append(cardItem.getCardElement());
-        }
-        // 計算弧度設定初始位置
         let setinit = () => {
-            selectItem = new Array();
+            element.empty();
+            cardListElement.empty();
+            cardSelectElement.empty();
+
+            //設定物件顯示
             for (let i = 0; i < randomCards.length; i++) {
-                cardList[i].setStyle(`left: ${i*110 +10}px;top: ${0}px`);
-                cardList[i].hide();
-                cardList[i].getCardElement().off("click").on("click", () => {
-                    if (selectItem.length < 3) {
-                        selectItem.push(cardList[i]);
-                        selectShow();
+                let cardItem = new CardItem(randomCards[i], "", false);
+                cardItem.setStyle(`left: 0px;top: 0px`);
+
+                cardItem.hide();
+                cardItem.getCardElement().off("click").on("click", () => {
+                    if (cardSelectElement.children().length < 3) {
+                        flipMove(cardItem, () => {
+                            cardItem.setStyle(``);
+                            cardSelectElement.append(cardItem.getCardElement());
+                        });
+
                     }
                 });
+                cardListElement.append(cardItem.getCardElement());
+                setTimeout(() => {
+                    cardItem.setStyle(`left: ${i * 110 + 10}px;top: ${0}px`);
+
+                }, 100);
             }
+
+
             //設定重置按鈕
             let resetButton = $(`<button class="resetButton btn btn-light">重置</button>`);
             resetButton.on("click", () => {
                 setinit();
             });
-            element.append(resetButton);
-             //洗牌
+
+
+            //洗牌
             let shuffleButton = $(`<button class="resetButton btn btn-light" style="left:80px;">洗牌</button>`);
             shuffleButton.on("click", () => {
-                element.empty();
-                cardList = new Array();
-                let randomCards = this.randomSort();
-                for (let i = 0; i < randomCards.length; i++) {
-                    let cardItem = new CardItem(randomCards[i], `left: ${0}px;top: ${0}px`, false);
-                    cardList.push(cardItem);
-                    element.append(cardItem.getCardElement());
-                }
-                element.append(resetButton);
-                element.append(shuffleButton);
 
-                setTimeout(() => {
-                    setinit();
-                }, 100);
+                randomCards = this.randomSort();
+                setinit();
+
             });
+            element.append(cardListElement);
+            element.append(resetButton);
             element.append(shuffleButton);
+            element.append(cardSelectElement);
+
         }
         setinit();
-    }
 
+    }
 }
 
 let isMinScreen = () => {
