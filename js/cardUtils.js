@@ -1,18 +1,18 @@
-function flipMove($el, changeDomFn, duration = 450) {
+function flipMove($el, changeDomFn, duration = 1000) {
     const el = $el.getCardElement()[0];
 
     // First
-    const first = el.getBoundingClientRect();
+    const first = $el.getCardElement().offset();
 
     // DOM 變更
     changeDomFn();
 
     // Last
-    const last = el.getBoundingClientRect();
+    const last = $el.getCardElement().offset();
 
     const dx = first.left - last.left;
     const dy = first.top - last.top;
-
+    console.log(dx, dy);
     // Invert
     el.style.transform = `translate(${dx}px, ${dy}px)`;
     el.style.transition = "none";

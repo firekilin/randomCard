@@ -116,7 +116,7 @@
 
 
 .cardSelect {
-    display: flex;
+    /* display: flex; */
     position: relative;
     flex-direction: row;
     flex-wrap: wrap;
