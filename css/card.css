@@ -49,6 +49,10 @@
   transform: rotateY(0deg);
 }
 
+.cardItem:hover {
+    transform: rotate(-20deg);
+}
+
 .container {
   padding-top: 50px;
 }
