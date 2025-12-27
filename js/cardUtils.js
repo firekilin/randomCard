@@ -226,7 +226,7 @@ $(() => {
     if (isMinScreen()) {
         cardGame01.game01($("#cardGame01"), 10);
     } else {
-        cardGame01.game01($("#cardGame01"));
+        cardGame01.game01($("#cardGame01"),22);
     }
     cardGame01.game02($("#cardGame02"));
 
