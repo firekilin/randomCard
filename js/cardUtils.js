@@ -181,7 +181,7 @@ class CardGame {
                 });
                 cardListElement.append(cardItem.getCardElement());
                 setTimeout(() => {
-                    cardItem.setStyle(`left: ${i * 110 + 10}px;top: ${0}px`);
+                    cardItem.setStyle(`left: ${i * 110 + 30}px;top: ${20}px`);
 
                 }, 100);
             }
