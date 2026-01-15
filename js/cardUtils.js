@@ -211,6 +211,55 @@ class CardGame {
         setinit();
 
     }
+
+    game03 = (element, cardnum = this.cardList.length) => {
+         let cardListElement = $("<div class='cardList'>");
+        let cardSelectElement = $("<div class='cardSelect'>");
+        let randomCards = this.randomSort();
+        let w = element.width() - 120;
+        let h = 50;
+       
+        let setinit = () => {
+            element.empty();
+            cardListElement.empty();
+            cardSelectElement.empty();
+            let r = (w * w) / (8 * h) + (h / 2);
+            let cx = w / 2;
+            let cy = r;
+            
+            //設定物件顯示
+            for (let i = 0; i < cardnum; i++) {
+                let cardItem = new CardItem(randomCards[i], "", false);
+                cardItem.setStyle(`left: 0px;top: 0px`);
+
+                cardItem.hide();
+                cardItem.getCardElement().off("click").on("click", () => {
+                    if (cardSelectElement.children().length < 1) {
+                        flipMove(cardItem, () => {
+                            cardItem.setStyle(``);
+                            cardSelectElement.append(cardItem.getCardElement());
+                        });
+
+                    }
+                });
+                cardListElement.append(cardItem.getCardElement());
+                setTimeout(() => {
+                     let x = (i / (cardnum - 1)) * w;
+                    let dx = x - cx;
+                    let y = cy - Math.sqrt(r * r - dx * dx);
+                    cardItem.setStyle(`left: ${x}px;top: ${h - y}px`);
+
+                }, 100);
+            }
+
+
+          
+            element.append(cardListElement);
+            element.append(cardSelectElement);
+
+        }
+        setinit();
+    }
 }
 
 let isMinScreen = () => {
@@ -230,5 +279,9 @@ $(() => {
     }
     cardGame01.game02($("#cardGame02"));
 
-
+    if (isMinScreen()) {
+        cardGame01.game03($("#cardGame03"), 10);
+    } else {
+        cardGame01.game03($("#cardGame03"),22);
+    }
 });

@@ -1,0 +1,64 @@
+
+@font-face {
+  font-family: 'Andelion';
+  src: url('../fonts/Andelion.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ROMANTIC';
+  src: url('../fonts/ROMANTIC.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: larger;
+}
+
+.text h1 {
+    font-family: ROMANTIC;
+}
+
+.text p {
+    font-family: Andelion;
+}
+
+.cardbox {
+    display: flex;
+    justify-content: center;
+}
+
+
+.cardGame03 {
+  padding: 30px;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+
+.cardGame03 .cardList {
+    position: relative;
+    height: 200px;
+}
+
+
+.cardGame03 .resetButton {
+  position: absolute;
+  top: 200px;
+  left: 10px;
+  z-index: 1000;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+
+.cardGame03 .cardSelect {
+    justify-content: center;
+}
